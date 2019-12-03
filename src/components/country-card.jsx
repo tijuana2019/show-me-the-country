@@ -1,7 +1,17 @@
 import React from "react";
 import "../styles/CountryCard.css";
 
-const CountryCard = props => (
+const CountryCard = props => {
+
+  if(!props.country) {
+    return null;
+  }
+
+
+  const { country: {
+   name, capital, population} } = props;
+
+return (
   <div className="card-list">
     <div className="card">
       <img
@@ -10,13 +20,17 @@ const CountryCard = props => (
         style={{ width: "100%" }}
       />
       <div className="card-details">
-        <h4>
-          <b>I am a country</b>
-        </h4>
-        <p>These are some details about me</p>
+        <h3>
+          <b>{name}</b>
+        </h3>
+        <ul>
+          <li>Capital: {capital}</li>
+          <li>Population: {population}</li>
+        </ul>
       </div>
     </div>
   </div>
 );
+}
 
 export default CountryCard;
